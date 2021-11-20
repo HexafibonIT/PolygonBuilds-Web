@@ -271,8 +271,10 @@
                         </div>
                     </div>
 
-
-                    <div id="robotics-industry-content" class="industry-content">
+                    <div
+                        id="robotics-industry-content"
+                        class="industry-content"
+                    >
                         <div class="industry-content-header">Robotics</div>
                         <div class="industry-content-body">
                             You represent and warrant that you are at least 18
@@ -295,11 +297,10 @@
                             the use or benefit of any third party.
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-        <!-- ********** END contact ********** -->
+        <!-- ********** END Industries ********** -->
 
         <!-- Optional JavaScript; choose one of the two! -->
 
@@ -331,6 +332,15 @@
                 arrows: true,
                 prevArrow: '<div class="slick-prev"><</div>', // Adds arrows to sides of slider
                 nextArrow: '<div class="slick-next">></div>',
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                        },
+                    },
+                ],
             })
             slider.on(
                 'beforeChange',
