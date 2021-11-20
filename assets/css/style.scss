@@ -692,3 +692,59 @@ section {
     }
   }
 }
+
+
+/* ************************************ *Industries ******************************** */
+.industries {
+  .slick-carousel {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }  
+  
+  .slick-next, .slick-prev {
+    color: #cccccc;
+    border-radius: 50px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-size: 34px;
+    margin:0 10px;
+    &:hover {
+      background-color: #ff8c00;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  
+  .industry-content {
+    display: none;
+    margin-top: 50px;
+    &-header {
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &-body{
+      line-height: 1.7;
+    }
+  }
+}
+.card-industries {
+  @extend .card-our-services;
+  margin: 0 5px;
+  &-category-title {
+    background-color: #cccccc;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 2px;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    &:hover {
+      background-color: #ff8c00;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+

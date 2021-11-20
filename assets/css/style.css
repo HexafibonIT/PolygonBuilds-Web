@@ -396,14 +396,14 @@ section {
   }
 }
 
-.card-our-services {
+.card-our-services, .card-industries {
   border-radius: 0px !important;
   min-height: 400px;
   color: #fff;
   border: none !important;
 }
 
-.card-our-services .card-header {
+.card-our-services .card-header, .card-industries .card-header {
   border-radius: 0px !important;
   border: none;
   text-align: center;
@@ -411,13 +411,14 @@ section {
   height: 220px 240px;
 }
 
-.card-our-services .card-body {
+.card-our-services .card-body, .card-industries .card-body {
   border: none;
   background-color: #3b3b3b;
 }
 
-.card-our-services .card-body p,
-.card-our-services .card-body h4 {
+.card-our-services .card-body p, .card-industries .card-body p,
+.card-our-services .card-body h4,
+.card-industries .card-body h4 {
   text-align: center;
 }
 
@@ -782,5 +783,66 @@ section {
 .gallery img:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+/* ************************************ *Industries ******************************** */
+.industries .slick-carousel {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.industries .slick-next, .industries .slick-prev {
+  color: #cccccc;
+  border-radius: 50px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  font-size: 34px;
+  margin: 0 10px;
+}
+
+.industries .slick-next:hover, .industries .slick-prev:hover {
+  background-color: #ff8c00;
+  color: #fff;
+  cursor: pointer;
+}
+
+.industries .industry-content {
+  display: none;
+  margin-top: 50px;
+}
+
+.industries .industry-content-header {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.industries .industry-content-body {
+  line-height: 1.7;
+}
+
+.card-industries {
+  margin: 0 5px;
+}
+
+.card-industries-category-title {
+  background-color: #cccccc;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 2px;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.card-industries-category-title:hover {
+  background-color: #ff8c00;
+  color: #fff;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
