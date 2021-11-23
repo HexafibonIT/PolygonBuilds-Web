@@ -377,8 +377,8 @@ section {
             text-align: center;
         }
         h4 {
-          background-color: #5252f2;
-          border-radius: 5px;
+            background-color: #5252f2;
+            border-radius: 5px;
         }
     }
 }
@@ -797,9 +797,9 @@ section {
             font-weight: bold;
             cursor: pointer;
             i {
-              font-size: 14px;
-              color: #5252f2;
-              margin-right: 10px;
+                font-size: 14px;
+                color: #5252f2;
+                margin-right: 10px;
             }
         }
     }
@@ -845,5 +845,45 @@ section {
                 color: #5252f2;
             }
         }
+    }
+}
+
+.moreinfo-wrapper {
+    background-color: white;
+    padding: 50px 0;
+    min-height: 800px;
+    color: black;
+    ul,
+    #content-navigation {
+        list-style-type: none;
+        li {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    }
+    #content-navigation {
+        margin: 0;
+        padding: 0;
+    }
+    .caret {
+        -moz-user-select: none; /* Firefox 2+ */
+        user-select: none;
+        &::after {
+            content: '\1433';
+            color: #5252f2;
+            display: inline-block;
+            margin-left: 6px;
+        }
+    }
+    .caret-down::after {
+        transform: rotate(90deg);
+    }
+
+    .nested {
+        display: none;
+    }
+
+    .active {
+        display: block;
     }
 }

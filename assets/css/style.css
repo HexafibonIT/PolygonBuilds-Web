@@ -987,4 +987,55 @@ section {
 .printing-service .compare-section div:nth-child(2) span {
   color: #5252f2;
 }
+
+.moreinfo-wrapper {
+  background-color: white;
+  padding: 50px 0;
+  min-height: 800px;
+  color: black;
+}
+
+.moreinfo-wrapper ul,
+.moreinfo-wrapper #content-navigation {
+  list-style-type: none;
+}
+
+.moreinfo-wrapper ul li,
+.moreinfo-wrapper #content-navigation li {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.moreinfo-wrapper #content-navigation {
+  margin: 0;
+  padding: 0;
+}
+
+.moreinfo-wrapper .caret {
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.moreinfo-wrapper .caret::after {
+  content: '\1433';
+  color: #5252f2;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.moreinfo-wrapper .caret-down::after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.moreinfo-wrapper .nested {
+  display: none;
+}
+
+.moreinfo-wrapper .active {
+  display: block;
+}
 /*# sourceMappingURL=style.css.map */

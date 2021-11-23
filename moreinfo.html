@@ -31,12 +31,6 @@
             integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
             crossorigin="anonymous"
         />
-
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
-            type="text/css"
-        />
     </head>
     <body>
         <!-- ********** Nav ********** -->
@@ -82,7 +76,7 @@
                             >Industries</a
                         >
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
@@ -124,99 +118,73 @@
             </div>
         </nav>
         <!-- ********** End Nav **********-->
-        <!-- ********** contact ********** -->
+
         <section class="background-dark">
-            <div class="printing-service">
+            <div class="moreinfo-wrapper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-lg-4"></div>
-                        <div class="col-md-12 col-lg-8 text-center">
-                            <h1 class="drop-down-header">
-                                Realize Your Imagination
-                            </h1>
-                            <span
-                                >Upload your fille to continue with
-                                PolygonBuilds Manufacturing</span
-                            >
-                            <div class="file-upload-section">
-                                <h3>
-                                    Drag and drop your files here to start your
-                                    quote or
-                                </h3>
-                                <form action="/upload-target" class="dropzone">
-                                    <div class="fallback">
-                                        <input
-                                            name="file"
-                                            type="file"
-                                            multiple
-                                        />
-                                    </div>
-                                </form>
-                                <h4>
-                                    We support the following file types and
-                                    sizes
-                                </h4>
+                        <div class="col-md-4">
+                            <ul id="content-navigation">
+                                <li><span>About Hubs</span></li>
+                                <li><span>Something</span></li>
+                                <li>
+                                    <span class="caret">Something</span>
+                                    <ul class="nested">
+                                        <li>Something</li>
+                                        <li>Something</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="caret">Something</span>
+                                    <ul class="nested">
+                                        <li>Something</li>
+                                        <li>Something</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span class="caret">Something</span>
+                                    <ul class="nested">
+                                        <li>Something</li>
+                                        <li>Something</li>
+                                        <li>
+                                            <span class="caret">Something</span>
+                                            <ul class="nested">
+                                                <li>Something</li>
+                                                <li>Something</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="selected-content">
+                                <h1>How to get a quote</h1>
                                 <span
-                                    >X_T, IGES, STP, SLDPRT, 3DM, IGS, SAT or
-                                    STEP files File size less than 128 MB, part
-                                    size < 3000*3000*3000 mm
-                                </span>
+                                    >lorem lorem lorem lorem lorem lorem lorem
+                                    lorem lorem lorem</span
+                                >
+                                <hr />
+                                <h4>1.Upload</h4>
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Earum perspiciatis eius
+                                    quod accusantium architecto quas, ipsa est,
+                                    minima asperiores illo voluptatum ducimus
+                                    iusto fuga incidunt sapiente nihil. Impedit,
+                                    quasi fugiat?</span
+                                >
+                                <div class="mt-5"></div>
+                                <h4>2.Upload</h4>
+                                <span
+                                    >Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Earum perspiciatis eius
+                                    quod accusantium architecto quas, ipsa est,
+                                    minima asperiores illo voluptatum ducimus
+                                    iusto fuga incidunt sapiente nihil. Impedit,
+                                    quasi fugiat?</span
+                                >
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="privacy-alert">
-                            <i class="fa fa-lock"></i>
-                            <span
-                                >Privacy: All your files are entirely secured
-                                with us (read our
-                                <a href="moreinfo.html">privacy guarantee</a>.).
-                                If you can't upload one of your parts at this
-                                time, you can also try our checkout with one of
-                                our sample parts.</span
-                            >
-                            <span><i class="fa fa-play"></i>How it works</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-description">
-                    <h2>Our online Lacer cutting service</h2>
-                    <span
-                        >Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Reprehenderit, modi at? Deserunt esse quod sunt,
-                        tempore ea veritatis, unde quibusdam possimus eveniet
-                        quam repellat, ullam sint laboriosam cum id beatae.Lorem
-                        ipsum dolor sit amet consectetur, adipisicing elit.
-                        Reprehenderit, modi at? Deserunt esse quod sunt, tempore
-                        ea veritatis, unde quibusdam possimus eveniet quam
-                        repellat, ullam sint laboriosam cum id beatae.Lorem
-                        ipsum dolor sit amet consectetur, adipisicing elit.
-                        Reprehenderit, modi at? Deserunt esse quod sunt, tempore
-                        ea veritatis, unde quibusdam possimus eveniet quam
-                        repellat, ullam sint laboriosam cum id beatae.Lorem
-                        ipsum dolor sit amet consectetur, adipisicing elit.
-                        Reprehenderit, modi at? Deserunt esse quod sunt, tempore
-                        ea veritatis, unde quibusdam possimus eveniet quam
-                        repellat, ullam sint laboriosam cum id beatae.</span
-                    >
-                </div>
-                <div class="container pt-4">
-                    <div class="material-card-wrapper">
-                        <div class="material-card">
-                            <img
-                                src="assets/img/services/3dprint.png"
-                                alt=""
-                                class="service-img"
-                            />
-                            <h2>Metal</h2>
-                        </div>
-                        <div class="material-card">
-                            <img
-                                src="assets/img/services/3dprint.png"
-                                alt=""
-                                class="service-img"
-                            />
-                            <h2>Acrylic</h2>
                         </div>
                     </div>
                 </div>
@@ -288,7 +256,6 @@
 
         <div id="preloader"></div>
         <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -303,11 +270,18 @@
             crossorigin="anonymous"
         ></script>
 
-        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script>
-            $(function () {
-                $('.dz-button').text('Select your files')
-            })
+            var toggler = document.getElementsByClassName('caret')
+            var i
+
+            for (i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener('click', function () {
+                    this.parentElement
+                        .querySelector('.nested')
+                        .classList.toggle('active')
+                    this.classList.toggle('caret-down')
+                })
+            }
         </script>
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
