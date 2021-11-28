@@ -3,6 +3,11 @@ body {
   padding: 0;
 }
 
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 .hero-section {
   height: 100vh;
   background-image: linear-gradient(90deg, rgba(2, 0, 36, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/bg.jpg);
@@ -348,6 +353,7 @@ section {
   width: 100%;
   padding: 5px 10px;
   border-radius: 50px;
+  color: white;
 }
 
 /* who-we-are 
@@ -963,6 +969,10 @@ section {
   max-width: 420px;
   padding: 15px;
   margin: auto;
+  margin-top: 5%;
+  background-color: #00000061;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
 }
 
 .form-label-group {
