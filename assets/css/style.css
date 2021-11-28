@@ -955,6 +955,8 @@ section {
   .form-label-group input::-ms-input-placeholder {
     color: #777;
   }
+}
+
 /* ************************************ *Industries ******************************** */
 .industries .slick-carousel {
   margin: 0 auto;
