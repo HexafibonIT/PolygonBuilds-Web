@@ -82,7 +82,7 @@
                         >
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="gallery.html">Gallery</a>
@@ -141,7 +141,7 @@
                                     />
                                 </div>
                                 <div class="card-body">
-                                    <div class="card-industries-category-title">
+                                    <div onclick="handleContentChange(0)" class="card-industries-category-title">
                                         Medical
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
                                     />
                                 </div>
                                 <div class="card-body">
-                                    <div class="card-industries-category-title">
+                                    <div onclick="handleContentChange(1)" class="card-industries-category-title">
                                         Architecture
                                     </div>
                                 </div>
@@ -173,7 +173,7 @@
                                     />
                                 </div>
                                 <div class="card-body">
-                                    <div class="card-industries-category-title">
+                                    <div onclick="handleContentChange(2)" class="card-industries-category-title">
                                         Textile
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                                     />
                                 </div>
                                 <div class="card-body">
-                                    <div class="card-industries-category-title">
+                                    <div onclick="handleContentChange(3)" class="card-industries-category-title">
                                         Robotics
                                     </div>
                                 </div>
@@ -199,24 +199,7 @@
                     <div id="medical-industry-content" class="industry-content">
                         <div class="industry-content-header">Medical</div>
                         <div class="industry-content-body">
-                            You represent and warrant that you are at least 18
-                            years of age to use these Services. If you are under
-                            18 years of age, you may use www.PolygonBuilds.com
-                            only with involvement of a parent or guardian.
-                            Children under 13 years old are not allowed to use
-                            these Services. We may, in our sole discretion,
-                            refuse to offer the Services to any person or entity
-                            and change its eligibility criteria at any time. You
-                            are solely responsible for ensuring that these Terms
-                            and Conditions are in compliance with all laws,
-                            rules and regulations applicable to you and the
-                            right to access the Services is revoked where these
-                            Terms and Conditions or use of the Services is
-                            prohibited or to the extent offering, sale or
-                            provision of the Services conflicts with any
-                            applicable law, rule or regulation. Further, the
-                            Services are offered only for your use, and not for
-                            the use or benefit of any third party.
+                            This is Meidcal
                         </div>
                     </div>
 
@@ -226,48 +209,14 @@
                     >
                         <div class="industry-content-header">Architecture</div>
                         <div class="industry-content-body">
-                            You represent and warrant that you are at least 18
-                            years of age to use these Services. If you are under
-                            18 years of age, you may use www.PolygonBuilds.com
-                            only with involvement of a parent or guardian.
-                            Children under 13 years old are not allowed to use
-                            these Services. We may, in our sole discretion,
-                            refuse to offer the Services to any person or entity
-                            and change its eligibility criteria at any time. You
-                            are solely responsible for ensuring that these Terms
-                            and Conditions are in compliance with all laws,
-                            rules and regulations applicable to you and the
-                            right to access the Services is revoked where these
-                            Terms and Conditions or use of the Services is
-                            prohibited or to the extent offering, sale or
-                            provision of the Services conflicts with any
-                            applicable law, rule or regulation. Further, the
-                            Services are offered only for your use, and not for
-                            the use or benefit of any third party.
+                            This is Architecture
                         </div>
                     </div>
 
                     <div id="textile-industry-content" class="industry-content">
                         <div class="industry-content-header">Textile</div>
                         <div class="industry-content-body">
-                            You represent and warrant that you are at least 18
-                            years of age to use these Services. If you are under
-                            18 years of age, you may use www.PolygonBuilds.com
-                            only with involvement of a parent or guardian.
-                            Children under 13 years old are not allowed to use
-                            these Services. We may, in our sole discretion,
-                            refuse to offer the Services to any person or entity
-                            and change its eligibility criteria at any time. You
-                            are solely responsible for ensuring that these Terms
-                            and Conditions are in compliance with all laws,
-                            rules and regulations applicable to you and the
-                            right to access the Services is revoked where these
-                            Terms and Conditions or use of the Services is
-                            prohibited or to the extent offering, sale or
-                            provision of the Services conflicts with any
-                            applicable law, rule or regulation. Further, the
-                            Services are offered only for your use, and not for
-                            the use or benefit of any third party.
+                            This is Textile
                         </div>
                     </div>
 
@@ -277,24 +226,7 @@
                     >
                         <div class="industry-content-header">Robotics</div>
                         <div class="industry-content-body">
-                            You represent and warrant that you are at least 18
-                            years of age to use these Services. If you are under
-                            18 years of age, you may use www.PolygonBuilds.com
-                            only with involvement of a parent or guardian.
-                            Children under 13 years old are not allowed to use
-                            these Services. We may, in our sole discretion,
-                            refuse to offer the Services to any person or entity
-                            and change its eligibility criteria at any time. You
-                            are solely responsible for ensuring that these Terms
-                            and Conditions are in compliance with all laws,
-                            rules and regulations applicable to you and the
-                            right to access the Services is revoked where these
-                            Terms and Conditions or use of the Services is
-                            prohibited or to the extent offering, sale or
-                            provision of the Services conflicts with any
-                            applicable law, rule or regulation. Further, the
-                            Services are offered only for your use, and not for
-                            the use or benefit of any third party.
+                            This is Robotics
                         </div>
                     </div>
                 </div>
@@ -396,8 +328,8 @@
                 slidesToShow: 3, // Shows a three slides at a time
                 slidesToScroll: 1, // When you click an arrow, it scrolls 1 slide at a time
                 arrows: true,
-                prevArrow: '<div class="slick-prev"><</div>', // Adds arrows to sides of slider
-                nextArrow: '<div class="slick-next">></div>',
+                prevArrow: '<div class="slick-prev"><i class="fa fa-chevron-left"></i></div>', // Adds arrows to sides of slider
+                nextArrow: '<div class="slick-next"><i class="fa fa-chevron-right"></i></div>',
                 responsive: [
                     {
                         breakpoint: 1024,
@@ -411,26 +343,29 @@
             slider.on(
                 'beforeChange',
                 function (event, slick, currentSlide, nextSlide) {
-                    $('#medical-industry-content').hide()
-                    $('#architecture-industry-content').hide()
-                    $('#textile-industry-content').hide()
-                    $('#robotics-industry-content').hide()
-                    switch (nextSlide) {
-                        case 0:
-                            $('#medical-industry-content').show()
-                            break
-                        case 1:
-                            $('#architecture-industry-content').show()
-                            break
-                        case 2:
-                            $('#textile-industry-content').show()
-                            break
-                        case 3:
-                            $('#robotics-industry-content').show()
-                            break
-                    }
+                    handleContentChange(nextSlide)
                 }
             )
+            function handleContentChange(slide) {
+                $('#medical-industry-content').hide()
+                $('#architecture-industry-content').hide()
+                $('#textile-industry-content').hide()
+                $('#robotics-industry-content').hide()
+                switch (slide) {
+                    case 0:
+                        $('#medical-industry-content').show()
+                        break
+                    case 1:
+                        $('#architecture-industry-content').show()
+                        break
+                    case 2:
+                        $('#textile-industry-content').show()
+                        break
+                    case 3:
+                        $('#robotics-industry-content').show()
+                        break
+                }
+            }
             $(function () {
                 $('#medical-industry-content').show()
             })

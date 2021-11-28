@@ -77,6 +77,7 @@ body {
 /* -------------------------------NavBar */
 #nav {
   width: 100%;
+  height: 70px;
   text-align: center;
   left: 0;
   z-index: 1;
@@ -87,6 +88,7 @@ body {
 
 @media (max-width: 992px) {
   #nav {
+    height: unset;
     background-color: #000;
   }
 }
@@ -1026,6 +1028,33 @@ section {
   color: #ff8c00;
 }
 
+@media (max-width: 992px) {
+  .printing-service .drop-down-header {
+    margin: 25px 0;
+  }
+}
+
+.printing-service .upload-preview-section {
+  background-color: #ccc;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #5252f2;
+}
+
+.printing-service .upload-preview-section img {
+  width: 100%;
+}
+
 .printing-service .file-upload-section {
   background-color: white;
   color: black;
@@ -1069,14 +1098,14 @@ section {
 }
 
 .printing-service .privacy-alert span:nth-child(3) {
-  color: #5252f2;
+  color: #ff8c00;
   font-weight: bold;
   cursor: pointer;
 }
 
 .printing-service .privacy-alert span:nth-child(3) i {
   font-size: 14px;
-  color: #5252f2;
+  color: #ff8c00;
   margin-right: 10px;
 }
 
@@ -1117,6 +1146,12 @@ section {
   width: 250px;
 }
 
+@media (max-width: 992px) {
+  .printing-service .material-card img {
+    width: 150px;
+  }
+}
+
 .printing-service .compare-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1146,7 +1181,7 @@ section {
 }
 
 .printing-service .compare-section div:nth-child(2) span {
-  color: #5252f2;
+  color: #ff8c00;
 }
 
 .moreinfo-wrapper {
@@ -1154,6 +1189,7 @@ section {
   padding: 50px 0;
   min-height: 800px;
   color: black;
+  font-size: 24px;
 }
 
 .moreinfo-wrapper ul,
@@ -1172,6 +1208,14 @@ section {
   padding: 0;
 }
 
+.moreinfo-wrapper .selected-content hr {
+  border-color: #ff8c00;
+}
+
+.moreinfo-wrapper .selected {
+  color: #ff8c00;
+}
+
 .moreinfo-wrapper .caret {
   -moz-user-select: none;
   /* Firefox 2+ */
@@ -1181,15 +1225,19 @@ section {
 }
 
 .moreinfo-wrapper .caret::after {
-  content: '\1433';
-  color: #5252f2;
-  display: inline-block;
-  margin-left: 6px;
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  content: '\f054';
+  color: #ff8c00;
+  margin-left: 10px;
 }
 
 .moreinfo-wrapper .caret-down::after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  content: '\f078';
+  color: #ff8c00;
+  margin-left: 10px;
 }
 
 .moreinfo-wrapper .nested {
@@ -1198,5 +1246,161 @@ section {
 
 .moreinfo-wrapper .active {
   display: block;
+}
+
+/* ************************************ Login ******************************** */
+.login-body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(2, 0, 36, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../img/bg.jpg);
+  background-image: linear-gradient(90deg, rgba(2, 0, 36, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/bg.jpg);
+  background-size: cover;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 560px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-login {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-control:focus {
+  color: #fff !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.form-label-group input {
+  border-bottom: 2px solid white !important;
+  border-radius: 0;
+}
+
+.form-label-group input:focus {
+  background-color: transparent;
+  border-bottom: 2px solid #ff8c00 !important;
+}
+
+.form-label-group input,
+.form-label-group label {
+  height: 3.125rem;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.form-label-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #ffffff;
+  pointer-events: none;
+  cursor: text;
+  /* Match the input under the label */
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:-ms-input-placeholder) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.form-label-group input:not(:-ms-input-placeholder) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.form-label-group input:-webkit-autofill ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: column-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+            flex-direction: column-reverse;
+  }
+  .form-label-group label {
+    position: static;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
 }
 /*# sourceMappingURL=style.css.map */
