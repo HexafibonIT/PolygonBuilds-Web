@@ -965,6 +965,10 @@ section {
   max-width: 560px;
   padding: 15px;
   margin: auto;
+  margin-top: 5%;
+  background-color: #00000061;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
 }
 .form-login {
   width: 100%;
