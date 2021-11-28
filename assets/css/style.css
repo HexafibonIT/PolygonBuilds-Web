@@ -77,6 +77,7 @@ body {
 /* -------------------------------NavBar */
 #nav {
   width: 100%;
+  height: 70px;
   text-align: center;
   left: 0;
   z-index: 1;
@@ -87,6 +88,7 @@ body {
 
 @media (max-width: 992px) {
   #nav {
+    height: unset;
     background-color: #000;
   }
 }
@@ -865,6 +867,33 @@ section {
   color: #ff8c00;
 }
 
+@media (max-width: 992px) {
+  .printing-service .drop-down-header {
+    margin: 25px 0;
+  }
+}
+
+.printing-service .upload-preview-section {
+  background-color: #ccc;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #5252f2;
+}
+
+.printing-service .upload-preview-section img {
+  width: 100%;
+}
+
 .printing-service .file-upload-section {
   background-color: white;
   color: black;
@@ -908,14 +937,14 @@ section {
 }
 
 .printing-service .privacy-alert span:nth-child(3) {
-  color: #5252f2;
+  color: #ff8c00;
   font-weight: bold;
   cursor: pointer;
 }
 
 .printing-service .privacy-alert span:nth-child(3) i {
   font-size: 14px;
-  color: #5252f2;
+  color: #ff8c00;
   margin-right: 10px;
 }
 
@@ -956,6 +985,12 @@ section {
   width: 250px;
 }
 
+@media (max-width: 992px) {
+  .printing-service .material-card img {
+    width: 150px;
+  }
+}
+
 .printing-service .compare-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -985,7 +1020,7 @@ section {
 }
 
 .printing-service .compare-section div:nth-child(2) span {
-  color: #5252f2;
+  color: #ff8c00;
 }
 
 .moreinfo-wrapper {
@@ -993,6 +1028,7 @@ section {
   padding: 50px 0;
   min-height: 800px;
   color: black;
+  font-size: 24px;
 }
 
 .moreinfo-wrapper ul,
@@ -1011,6 +1047,14 @@ section {
   padding: 0;
 }
 
+.moreinfo-wrapper .selected-content hr {
+  border-color: #ff8c00;
+}
+
+.moreinfo-wrapper .selected {
+  color: #ff8c00;
+}
+
 .moreinfo-wrapper .caret {
   -moz-user-select: none;
   /* Firefox 2+ */
@@ -1020,15 +1064,19 @@ section {
 }
 
 .moreinfo-wrapper .caret::after {
-  content: '\1433';
-  color: #5252f2;
-  display: inline-block;
-  margin-left: 6px;
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  content: '\f054';
+  color: #ff8c00;
+  margin-left: 10px;
 }
 
 .moreinfo-wrapper .caret-down::after {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  content: '\f078';
+  color: #ff8c00;
+  margin-left: 10px;
 }
 
 .moreinfo-wrapper .nested {
