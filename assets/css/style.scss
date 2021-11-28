@@ -2,6 +2,11 @@ body {
     padding: 0;
 }
 
+a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
 .hero-section {
     height: 100vh;
     background-image: linear-gradient(
@@ -91,10 +96,10 @@ body {
         border-bottom: 3px solid #ff8c00;
         transition: all 0.2s;
     }
-  .nav-item:hover {
-    border-bottom: 3px solid #ff8c00;
-    transition: all 0.2s;
-  }
+    .nav-item:hover {
+        border-bottom: 3px solid #ff8c00;
+        transition: all 0.2s;
+    }
 }
 
 .top-nav {
@@ -344,6 +349,7 @@ section {
   width: 100%;
   padding: 5px 10px;
   border-radius: 50px;
+  color: white;
 }
 
 /* who-we-are 
@@ -965,6 +971,10 @@ section {
   max-width: 420px;
   padding: 15px;
   margin: auto;
+  margin-top: 5%;
+  background-color: #00000061;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
 }
 
 .form-label-group {
