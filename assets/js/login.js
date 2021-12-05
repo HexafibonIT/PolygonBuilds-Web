@@ -5,16 +5,35 @@
       $emailInput: $("#inputEmail"),
       $passwordInput: $("#inputPassword"),
       $submitBtn: $("#poly-login-btn"),
-      $loginform: $(".needs-validation"),
+      $loginform: $("#form-login"),
       $invalidFields: $(".is-invalid"),
       BASE_URL: "https://axe.polygonbuilds.com/api",
       emailValue: null,
       passwordValue: null,
+      Toast: null,
+      invalidFieldsLen: 2,
       init: function () {
         this.initPlugins();
         this.handleEvents();
       },
-      initPlugins: function () {},
+      initPlugins: function () {
+        const context = this;
+        context.Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          customClass: {
+            popup: 'colored-toast'
+          },
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          iconColor: '#ffff',
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+      },
       handleEvents: function () {
         const context = this;
 
@@ -37,7 +56,17 @@
           }
         });
         context.$submitBtn.on("click", function (event) {
-          if (context.validateLoginForm()) {
+          event.preventDefault();
+          if (!context.validateLoginForm() ) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            context.Toast.fire({
+              icon: 'error',
+              title: 'Please input valid credentials'
+            });
+          }
+          else {
             let params = {
               username: context.emailValue,
               password: context.passwordValue
@@ -57,25 +86,18 @@
                 }, 1000);
               },
               error: function () {
-                Swal.fire({
-                  title: "Error!",
-                  text: "These credentials are not in our system",
-                  icon: "error",
+                context.Toast.fire({
+                  icon: 'error',
+                  title: 'These credentials are not in our system'
                 });
               },
-            });
-          } else {
-            Swal.fire({
-              title: "Error!",
-              text: "Please input valid credentials",
-              icon: "error",
             });
           }
         });
       },
       validateLoginForm() {
         const context = this;
-        return context.$invalidFields.length > 0 ? false : true;
+        return context.$invalidFields.length > 0 || !context.emailValue || !context.passwordValue ? false : true;
       },
       validateEmail(email) {
         return String(email)
