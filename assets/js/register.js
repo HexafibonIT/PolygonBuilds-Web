@@ -1,12 +1,13 @@
 (function ($) {
   "use strict";
   $(function () {
-    const loginFormObj = {
+    const registerFormObj = {
       $emailInput: $("#inputEmail"),
       $passwordInput: $("#inputPassword"),
-      $submitBtn: $("#poly-login-btn"),
-      $loginform: $("#form-login"),
+      $submitBtn: $("#poly-reg-btn"),
+      $registerform: $("#form-register"),
       $invalidFields: $(".is-invalid"),
+      $btnLoadingSpinner: $(".btn-loading-spinner"),
       BASE_URL: "https://axe.polygonbuilds.com/api",
       emailValue: null,
       passwordValue: null,
@@ -20,18 +21,18 @@
         const context = this;
         context.Toast = Swal.mixin({
           toast: true,
-          position: 'top-end',
+          position: "top-end",
           customClass: {
-            popup: 'colored-toast'
+            popup: "colored-toast",
           },
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
-          iconColor: '#ffff',
+          iconColor: "#ffff",
           didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
         });
       },
       handleEvents: function () {
@@ -57,23 +58,35 @@
         });
         context.$submitBtn.on("click", function (event) {
           event.preventDefault();
-          if (!context.validateLoginForm() ) {
+
+          if (!context.validateLoginForm()) {
             event.preventDefault();
             event.stopPropagation();
 
             context.Toast.fire({
-              icon: 'error',
-              title: 'Please input valid credentials'
+              icon: "error",
+              title: "Please input valid credentials",
             });
-          }
-          else {
-            let params = {
+          } else {
+            context.setLoading(true);
+
+            let userParams = {
               username: context.emailValue,
-              password: context.passwordValue
+              email: context.emailValue,
+              password: context.passwordValue,
+            };
+
+            let customerParams = {
+              name: context.emailValue,
+            };
+
+            let params = {
+              user: userParams,
+              customer: customerParams,
             };
             $.ajax({
               type: "POST",
-              url: context.BASE_URL + "/auth/signin",
+              url: context.BASE_URL + "/auth/signup",
               data: params,
               success: function (result) {
                 toastMessage("success", "Welcome to PolygonBuilds...");
@@ -84,20 +97,27 @@
                     }, 500);
                   });
                 }, 1000);
+                context.setLoading(false);
               },
-              error: function () {
+              error: function (result) {
                 context.Toast.fire({
-                  icon: 'error',
-                  title: 'These credentials are not in our system'
+                  icon: "error",
+                  title: result.responseJSON.message,
                 });
+                context.setLoading(false);
               },
             });
+            
           }
         });
       },
       validateLoginForm() {
         const context = this;
-        return context.$invalidFields.length > 0 || !context.emailValue || !context.passwordValue ? false : true;
+        return context.$invalidFields.length > 0 ||
+          !context.emailValue ||
+          !context.passwordValue
+          ? false
+          : true;
       },
       validateEmail(email) {
         return String(email)
@@ -109,7 +129,15 @@
       validatePassword(password) {
         return password.length >= 8 ? true : false;
       },
+      setLoading(state) {
+        const context = this;
+        if (state) {
+          context.$btnLoadingSpinner.show();
+        } else {
+          context.$btnLoadingSpinner.hide();
+        }
+      },
     };
-    loginFormObj.init();
+    registerFormObj.init();
   });
 })(jQuery);
