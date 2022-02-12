@@ -1097,6 +1097,7 @@ section {
 
 .printing-service .upload-preview-section {
   background-color: #ccc;
+  background-image: url("https://media.istockphoto.com/photos/installation-with-white-cube-3d-render-picture-id1144256820?k=20&m=1144256820&s=170667a&w=0&h=IAvpc2WFsJpdrjXInOKx3zhfyTbJqYk0PsOQoeDX-Ls=");
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1436,8 +1437,9 @@ section {
 }
 
 .printing-placeholder .upload-preview-section {
-  background-color: #ccc;
-  height: 400px;
+  background-color: #DADADA;
+  min-height: 490px !important;
+  min-width: 352px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
