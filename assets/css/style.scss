@@ -775,7 +775,7 @@ section {
         flex-direction: column;
         justify-content: center;
         border-radius: 10px;
-        border: 1px solid #5252f2;
+        border: 1px solid #ff8c00;
         img {
             width: 100%;
         }
@@ -916,6 +916,25 @@ section {
     }
 }
 
+.upload-info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-button {
+        text-align: center;
+        width: 400px;
+        margin-top: 30px;
+        background-color: #ff8c00;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
 .printing-placeholder {
     .upload-preview-section {
         background-color: #ccc;
@@ -924,34 +943,10 @@ section {
         flex-direction: column;
         justify-content: center;
         border-radius: 10px;
-        border: 1px solid #5252f2;
+        border: 1px solid #ff8c00;
         img {
             width: 100%;
             height: 100;
-        }
-    }
-    .upload-info-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        &-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 100px;
-        }
-        &-button {
-            text-align: center;
-            width: 400px;
-            margin-top: 30px;
-            background-color: #5252f2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
         }
     }
     .customize-section {
@@ -972,7 +967,7 @@ section {
                 font-weight: bold;
                 margin-bottom: 10px;
             }
-            border: 1px solid #5252f2;
+            border: 1px solid #ff8c00;
             border-radius: 5px;
             &:hover,
             &-selected {
@@ -1004,13 +999,13 @@ section {
                     width: 30px;
                     height: 30px;
                     &:hover {
-                        background-color: #5252f2;
+                        background-color: #ff8c00;
                         cursor: pointer;
                     }
                 }
             }
             .action-btn {
-                background-color: #5252f2;
+                background-color: #ff8c00;
                 border-radius: 5px;
                 padding: 10px 60px;
                 &:hover {
@@ -1025,11 +1020,11 @@ section {
                 border-radius: 5px;
                 padding: 10px 0;
                 &:hover::after {
-                    background: #5252f2;
+                    background: #ff8c00;
                 }
                 &::after {
                     transition: 200ms all ease;
-                    background: #5252f2;
+                    background: #ff8c00;
                     text-align: center;
                     position: absolute;
                     top: 0;
@@ -1065,7 +1060,7 @@ section {
     }
 }
 .drag-area {
-	border: 2px dashed #fff;
+	border: 2px dashed #ff8c00;
 	height: 500px;
 	width: 700px;
 	border-radius: 5px;
@@ -1081,12 +1076,14 @@ section {
 		font-size: 30px;
 		font-weight: 500;
 		color: #fff;
+        width: 70%;
 	}
 	span {
 		font-size: 14px;
 		font-weight: 500;
 		color: #fff;
 		margin: 10px 0 15px 0;
+        width: 70%;
 	}
 	button {
 		padding: 10px 25px;
@@ -1094,7 +1091,7 @@ section {
 		font-weight: 500;
 		border: none;
 		outline: none;
-		background:#5252f2;
+		background:#ff8c00;
 		color:white;
 		border-radius: 5px;
 		cursor: pointer;
@@ -1109,4 +1106,95 @@ section {
 }
 .drag-area.active {
 	border: 2px solid #fff;
+}
+
+.summary-content {
+    .action-input {
+        display: block;
+        position: relative;
+        margin: auto;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px 0;
+        &:hover::after {
+            background: #ff8c00;
+        }
+        &::after {
+            transition: 200ms all ease;
+            background: #ff8c00;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 100%;
+            display: block;
+            content: 'Add new';
+            padding-top: 10px;
+            border-radius: 5px;
+        }
+    }
+    .action-submit {
+        background-color: #ff8c00;
+        border-radius: 5px;
+        padding: 10px 60px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.order-summary-main {
+    padding: 5px;
+}
+
+.order-details-main {
+    #deliveryDetails, #orderDetails, #orderRemarks, #deliveryRemarks {
+        background-color: #919191;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+    }
+    .details-sections {
+        padding-bottom: 10px;
+    }
+    .bottom-panel {
+        display: flex;
+        padding-top: 20px;
+        justify-content: right;
+        gap: 5px;
+        .action-btn {
+            background-color: #ff8c00;
+            border-radius: 5px;
+            padding: 10px 60px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .action-btn-other {
+            background-color: #ff8c00;
+            border-radius: 5px;
+            padding: 10px 30px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+       .btn-billing {
+            background-color: #ff8c00;
+            border-radius: 5px;
+            padding: 10px 60px;
+            &:hover {
+                cursor: pointer;
+            }
+       } 
+    }
+}
+
+#order-summary-container {
+    .row {
+        background-color:#919191; 
+        border-radius: 10px;
+        padding: 10px;
+        margin:10px 5px;
+    }
 }
