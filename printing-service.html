@@ -38,6 +38,13 @@
             type="text/css"
         />
 
+        <!-- Madeleine JS -->
+        <link href="src/css/Madeleine.css" rel="stylesheet" />
+        <script src="src/lib/stats.js"></script>
+        <script src="src/lib/detector.js"></script>
+        <script src="src/lib/three.min.js"></script>
+        <script src="src/Madeleine.js"></script>
+
     </head>
     <body>
         <!-- ********** Nav ********** -->
@@ -237,16 +244,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="upload-preview-section">
+                            <div class="upload-preview-section" id="model-preview">
                                 <img src="https://media.istockphoto.com/photos/installation-with-white-cube-3d-render-picture-id1144256820?k=20&m=1144256820&s=170667a&w=0&h=IAvpc2WFsJpdrjXInOKx3zhfyTbJqYk0PsOQoeDX-Ls=" alt="">
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="upload-info-section" id="upload-info-section">
-                                <div class="upload-info-section-title">You have submitted <span id="submitted-file-amount"></span> files</div>
-                                <div class="upload-info-section-button" onclick="handleOptionButtons(buttonTypes.DEFAULT)">Let Polygonbuilds take care of My order</div>
-                                <div class="upload-info-section-button" onclick="handleOptionButtons(buttonTypes.CUSTOMIZE)">Let Me select my print settings</div>
-                            </div>
                             <div class="customize-section" id="customize-section">
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -274,7 +276,7 @@
                                         <span>Select Color</span>
                                         <div id="select-color-row"></div>
                                         
-                                        <span>Advanced Options</span>
+                                        <span><b>Advanced Options</b></span><br>
                                         <span>Vertical Resolution</span>
                                         <div id="vertical-resolution-row"></div>
 
@@ -307,7 +309,7 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 class="drop-down-header"> You have submitted {{n}} models</h2>  
+                        <h2 class="drop-down-header"> You have submitted <span id="number-of-models"></span> model/s</h2>  
                     </div>                  
                 </div>
                 <br>
@@ -315,19 +317,19 @@
                     <div class="container">
                         <form action="">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="notes">Notes</label>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="input-group">                                    
-                                        <input
+                                        <textarea
                                             class="form-control"
-                                            type="text"
+                                            type="text-area"
                                             name="notes"
-                                            id="notes"
-                                        />
+                                            id="notes">
+                                        </textarea>
                                     </div>
                                 </div> 
                                 <div class="col-md-3">
@@ -335,19 +337,29 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="btnUpload">Add additional files if needed</label>
                                 </div>
-                                <div class="col-md-3">
-                                    <button type="button" class="btn btn-secondary">Upload Files</button>
+                                <div class="col-md-4">
+                                    <input type="file" onchange="handleAddNewFile(event)" accept=".stl" multiple class="action-input">
                                 </div>
                                 <div class="col-md-3">
                                 </div>
                             </div>
-                            <div class="row text-center" >
-                                <button type="submit">Submit</button>
+                            <br>
+                            <div class="row text-center" style="padding-top: 20px;">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">                                    
+                                    <div class="action-submit">Add to Cart</div>
+                                </div>
+                                <div class="col-md-3">                                    
+                                    <div class="action-submit" onclick="handleBillingButton()">Submit</div>
+                                </div>
+                                <div class="col-md-3">
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -356,317 +368,324 @@
         </section>
 
         <section id="page-step-4" class="background-dark">
-            <div class="row">
-                <div class="col-md-4 order-summary-main">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="container">
-                                <h2>Order Summary</h2>
-                                <div class="row">
-                                    <div class="container" style="background-color: white;margin-left: 10px;color: black;">
-                                        sample text
-                                    </div>
-                                </div>
-                            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 order-summary-main">
+                        <div class="col-md-12">
+                            <h3>Order Summary</h3>
+                                <div id="order-summary-container" class="container" style="background-color: white;color: black; border-radius: 10px;padding: 10px;">
+                                </div>                   
                         </div>
-                    </div>                    
-                </div>
-                <div class="col-md-8 order-details-main">
-                    <div class="container">
-                        <div class="row">
-                            <h3>Delivery Details</h3>  
-                        </div>
-                        <form id="deliveryDetails">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="recipientName">Recepient Name *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-user-circle"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                type="text"
-                                                name="recipientName"
-                                                id="recipientName"
-                                                placeholder="Full Name"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                    <label for="deliveryAddress">Street address *</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-map-marked-alt"></i>
-                                        </div>
-                                        </div>
-                                        <textarea
-                                        class="form-control"
-                                        type="text"
-                                        name="deliveryAddress"
-                                        id="deliveryAddress"
-                                        placeholder="House number and street name"
-                                        required
-                                        ></textarea>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="townCity">Town / City *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-city"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                type="text"
-                                                name="townCity"
-                                                id="townCity"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="postalCode">Postal Code *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-envelope"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                            class="form-control"
-                                            type="text"
-                                            name="postalCode"
-                                            id="postalCode"
-                                            required
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="phone">Phone *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-phone"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                            class="form-control"
-                                            type="text"
-                                            name="phone"
-                                            id="phone"
-                                            required
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
                     </div>
-                    <div class="container">
-                        <div class="row">
-                            <h3>Order Details</h3>  
+                    <div class="col-md-8 order-details-main">
+                        <div class="container details-sections">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Delivery Details</h3> 
+                                </div>
+                                <div class="col-md-12">
+                                    <form id="deliveryDetails">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="recipientName">Recepient Name *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                            class="form-control"
+                                                            type="text"
+                                                            name="recipientName"
+                                                            id="recipientName"
+                                                            placeholder="Full Name"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                <label for="deliveryAddress">Street address *</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fas fa-map-marked-alt"></i>
+                                                    </div>
+                                                    </div>
+                                                    <textarea
+                                                    class="form-control"
+                                                    type="text"
+                                                    name="deliveryAddress"
+                                                    id="deliveryAddress"
+                                                    placeholder="House number and street name"
+                                                    required
+                                                    ></textarea>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="townCity">Town / City *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-city"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                            class="form-control"
+                                                            type="text"
+                                                            name="townCity"
+                                                            id="townCity"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="postalCode">Postal Code *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-envelope"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                        class="form-control"
+                                                        type="text"
+                                                        name="postalCode"
+                                                        id="postalCode"
+                                                        required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="phone">Phone *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-phone"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                        class="form-control"
+                                                        type="text"
+                                                        name="phone"
+                                                        id="phone"
+                                                        required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>                             
+                            </div>                        
                         </div>
-                        <form id="orderDetails">
+                        <div class="container details-sections">
                             <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="orderRecipientName">Recepient Name *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-user-circle"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                                class="form-control"
-                                                type="text"
-                                                name="orderRecipientName"
-                                                id="orderRecipientName"
-                                                placeholder="Full Name"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
+                                <div class="col-md-12">
+                                    <h3>Order Details</h3>  
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                    <label for="orderAddress">Street address *</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-map-marked-alt"></i>
+                                <div class="col-md-12">
+                                    <form id="orderDetails">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="orderRecipientName">Recepient Name *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-user-circle"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                            class="form-control"
+                                                            type="text"
+                                                            name="orderRecipientName"
+                                                            id="orderRecipientName"
+                                                            placeholder="Full Name"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                <label for="orderAddress">Street address *</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fas fa-map-marked-alt"></i>
+                                                    </div>
+                                                    </div>
+                                                    <textarea
+                                                    class="form-control"
+                                                    type="text"
+                                                    name="orderAddress"
+                                                    id="orderAddress"
+                                                    placeholder="House number and street name"
+                                                    required
+                                                    ></textarea>
+                                                </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="orderTownCity">Town / City *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-city"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                            class="form-control"
+                                                            type="text"
+                                                            name="orderTownCity"
+                                                            id="orderTownCity"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="orderPostalCode">Postal Code *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-envelope"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                        class="form-control"
+                                                        type="text"
+                                                        name="orderPostalCode"
+                                                        id="orderPostalCode"
+                                                        required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="orderPhone">Phone *</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <i class="fas fa-phone"></i>
+                                                        </div>
+                                                        </div>
+                                                        <input
+                                                        class="form-control"
+                                                        type="text"
+                                                        name="orderPhone"
+                                                        id="orderPhone"
+                                                        required
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <textarea
-                                        class="form-control"
-                                        type="text"
-                                        name="orderAddress"
-                                        id="orderAddress"
-                                        placeholder="House number and street name"
-                                        required
-                                        ></textarea>
-                                    </div>
-                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="container details-sections">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Order Remarks</h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Delivery Remarks</h3>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="orderTownCity">Town / City *</label>
-                                        <div class="input-group mb-3">
+                                <div class="col-6">
+                                    <div class="col-md-12" id="orderRemarks">
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-city"></i>
+                                                <div class="input-group-text">
+                                                <i class="fas fa-edit"> </i>
+                                                </div>
                                             </div>
-                                            </div>
-                                            <input
+                                            <textarea
                                                 class="form-control"
                                                 type="text"
-                                                name="orderTownCity"
-                                                id="orderTownCity"
+                                                name="ord_remarks"
+                                                id="ord_remarks"
+                                                placeholder="Enter your order remarks here Special Instructions for printing, painting etc"
                                                 required
-                                            />
+                                            ></textarea>
+                                            </div>
                                         </div>
-                                    </div>
+                                        </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="orderPostalCode">Postal Code *</label>
-                                        <div class="input-group mb-3">
+                                <div class="col-6">
+                                    <div class="col-md-12" id="deliveryRemarks">
+                                        <div class="form-group">
+                                            <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-envelope"></i>
+                                                <div class="input-group-text">
+                                                <i class="fas fa-edit"> </i>
+                                                </div>
                                             </div>
+                                            <textarea
+                                                class="form-control"
+                                                type="text"
+                                                name="delv_remarks"
+                                                id="delv_remarks"
+                                                placeholder="Enter your delivery remarks here"
+                                                required
+                                            ></textarea>
                                             </div>
-                                            <input
-                                            class="form-control"
-                                            type="text"
-                                            name="orderPostalCode"
-                                            id="orderPostalCode"
-                                            required
-                                            />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="orderPhone">Phone *</label>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-phone"></i>
-                                            </div>
-                                            </div>
-                                            <input
-                                            class="form-control"
-                                            type="text"
-                                            name="orderPhone"
-                                            id="orderPhone"
-                                            required
-                                            />
-                                        </div>
-                                    </div>
+                            </div> 
+                        </div>
+                        
+                        <div style="padding: 0 10px;">
+                            <div class="bottom-panel">
+                                <div 
+                                    type="button" 
+                                    class="btn action-btn-other" onclick="handleResetButton()"">
+                                        Reset
                                 </div>
-                            </div>
-                        </form>
+                                <div
+                                    type="button"
+                                    class="btn action-btn-other" onclick="handlePrevious()">
+                                        Previous
+                                </div>
+                                <div 
+                                    type="button" 
+                                    class="btn action-btn-other">
+                                        Add to cart
+                                </div>
+                                <!-- <div
+                                    type="button"
+                                    class="btn btn-billing"
+                                    id="submit-btn">
+                                        Billing
+                                </div> -->
+                            </div> 
+                        </div>     
                     </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <h3>Order Remarks</h3>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                        <i class="fas fa-edit"> </i>
-                                        </div>
-                                    </div>
-                                    <textarea
-                                        class="form-control"
-                                        type="text"
-                                        name="ord_remarks"
-                                        id="ord_remarks"
-                                        placeholder="Enter your order remarks here Special Instructions for printing, painting etc"
-                                        required
-                                    ></textarea>
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                        <div class="col-6">
-                            <h3>Delivery Remarks</h3>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                        <i class="fas fa-edit"> </i>
-                                        </div>
-                                    </div>
-                                    <textarea
-                                        class="form-control"
-                                        type="text"
-                                        name="delv_remarks"
-                                        id="delv_remarks"
-                                        placeholder="Enter your delivery remarks here"
-                                        required
-                                    ></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="container">
-                        <div class="row" id="btn-pannel" style="position: sticky; padding: 15px 10px">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6">
-                                <div class="btn-group" role="group" style="float: right">
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-secondary">
-                                            Reset
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-warning">
-                                            Previous
-                                    </button>
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-primary">
-                                            Add to cart
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-success"
-                                        disabled
-                                        id="submit-btn">
-                                            Billing
-                                    </button>
-                                </div>                    
-                            </div>
-                        </div>
-                    </div>                   
-                </div>
-            </div>            
+                </div> 
+            </div>           
         </section>
         <!-- ======= Footer ======= -->
         <footer id="footer">
@@ -718,6 +737,8 @@
 
         <div id="preloader"></div>
         <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
             const fileList = []
@@ -830,11 +851,19 @@
                     }
                 }
                 if(fileList.length!==0 && changePageStep){
-                    pageStep = 2
-                    // hide customize-section on page load
-                    document.getElementById("customize-section").style.display = "none";
-                    document.getElementById("submitted-file-amount").innerHTML = fileList.length;     
-                    scrollToTop()       
+                    Swal.fire({
+                        allowOutsideClick:false,
+                        allowEscapeKey:false,
+                        showConfirmButton:false,
+                        title: `You have submitted ${fileList.length} file/s`,
+                        html:`
+                            <div class="upload-info-section" id="upload-info-section">
+                                <div class="upload-info-section-title"></div>
+                                <div class="upload-info-section-button" onclick="handleOptionButtons(buttonTypes.DEFAULT)">Let Polygonbuilds take care of My order</div>
+                                <div class="upload-info-section-button" onclick="handleOptionButtons(buttonTypes.CUSTOMIZE)">Let Me select my print settings</div>
+                            </div>
+                        `,
+                    }) 
                 }
             }
 
@@ -983,13 +1012,21 @@
                 percentageRow.innerHTML = '';
             }
 
+            function renderModels(model) {
+                // Lily.ready({
+                //     target: 'model-preview',  // target div id
+                //     file: 'model',  // file input id
+                //     path: './src' // path to source directory from current html file
+                // });
+            }
+
             function handleOptionButtons(buttonType) {
                 if(buttonType === buttonTypes.CUSTOMIZE) {
-                    document.getElementById("upload-info-section").style.display = "none";
-                    document.getElementById("customize-section").style.display = "block";
-                    
+                    pageStep = 2
+                    Swal.close()
+                    scrollToTop()  
                     modelList = fileList;
-                    console.log(modelList)
+                    renderModels(modelList[0].file)
 
                     totalModels = modelList.length;
                     const materialData = fetchMaterialData(materialTypes.FDM);
@@ -1000,6 +1037,8 @@
 
                 } else {
                     pageStep = 3    
+                    Swal.close()
+                    scrollToTop()  
                 }
             }
 
@@ -1036,8 +1075,78 @@
             }
 
             function handleBillingButton() {
-                console.log(modelList)
                 pageStep = 4
+                scrollToTop()
+                fillOrderSummary()
+            }
+
+            function handlePrevious() {
+                pageStep = 2
+                scrollToTop()
+            }
+
+            function handleResetButton() {                
+                const recipientName = document.getElementById('recipientName');
+                recipientName.value = '';
+                const deliveryAddress = document.getElementById('deliveryAddress');
+                deliveryAddress.value = '';
+                const townCity = document.getElementById('townCity');
+                townCity.value = '';
+                const postalCode = document.getElementById('postalCode');
+                postalCode.value = '';
+                const phone = document.getElementById('phone');
+                phone.value = '';
+                const orderRecipientName = document.getElementById('orderRecipientName');
+                orderRecipientName.value = '';
+                const orderAddress = document.getElementById('orderAddress');
+                orderAddress.value = '';
+                const orderTownCity = document.getElementById('orderTownCity');
+                orderTownCity.value = '';
+                const orderPostalCode = document.getElementById('orderPostalCode');
+                orderPostalCode.value = '';
+                const orderPhone = document.getElementById('orderPhone');
+                orderPhone.value = '';
+                const ord_remarks = document.getElementById('ord_remarks');
+                ord_remarks.value = '';
+                const delv_remarks = document.getElementById('delv_remarks');
+                delv_remarks.value = '';
+                scrollToTop()
+            }
+
+            function fillOrderSummary(){
+                const orderSummary = document.getElementById('order-summary-container');
+                modelList.forEach(model=>{
+                    console.log(model)
+                    if(model.parentMaterialType===undefined){
+                        orderSummary.innerHTML += `<div class='row'>
+                        <div class='col-md-8'><b>Material:</b></div><div class='col-md-4'>XXXX</div>
+                        <div class='col-md-8'><b>Color:</b></div> <div class='col-md-4'>XXXX</div>
+                        <div class='col-md-8'><b>Vertical Resolution:</b></div> <div class='col-md-4'>XXXX</div>
+                        <div class='col-md-8'><b>Infill Type:</b></div> <div class='col-md-4'>XXXX</div>
+                        <div class='col-md-8'><b>Infill Percentage:</b></div> <div class='col-md-4'>$XXXX</div></div>`
+                    }
+                    else {
+                        
+                        if(model.parentMaterialType==='FDM'){
+                            orderSummary.innerHTML += `<div class='row'>
+                                <div class='col-md-8'><b>Material:</b></div><div class='col-md-4'>${model.material}</div>
+                                <div class='col-md-8'><b>Color:</b></div> <div class='col-md-4'>${model.color}</div>
+                                <div class='col-md-8'><b>Vertical Resolution:</b></div> <div class='col-md-4'>${model.verticalResolution}</div>
+                                <div class='col-md-8'><b>Infill Type:</b></div> <div class='col-md-4'>${model.infillType}</div>
+                                <div class='col-md-8'><b>Infill Percentage:</b></div> <div class='col-md-4'>${model.infillPercentage}</div>
+                                <div class='col-md-8'><b>Wall Thickness:</b></div> <div class='col-md-4'>${model.wallThickness}</div></div>`
+                        }
+                        else {
+                            orderSummary.innerHTML += `<div class='row'>
+                                <div class='col-md-8'><b>Material:</b></div><div class='col-md-4'>${model.material}</div>
+                                <div class='col-md-8'><b>Color:</b></div> <div class='col-md-4'>${model.color}</div>
+                                <div class='col-md-8'><b>Vertical Resolution:</b></div> <div class='col-md-4'>${model.verticalResolution}</div>
+                                <div class='col-md-8'><b>Infill Type:</b></div> <div class='col-md-4'>${model.infillType}</div>
+                                <div class='col-md-8'><b>Infill Percentage:</b></div> <div class='col-md-4'>${model.infillPercentage}</div></div>`
+                        }
+                    }
+                    
+                })
             }
 
         </script>
