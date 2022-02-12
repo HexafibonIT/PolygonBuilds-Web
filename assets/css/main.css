@@ -379,12 +379,12 @@ section {
   font-size: 14px;
 }
 
-#poly-btn {
+.poly-btn {
   background-color: #ff8c00 !important;
-  width: 100%;
-  padding: 5px 10px;
-  border-radius: 50px;
-  color: white;
+  width: 100% !important;
+  padding: 5px 10px !important;
+  border-radius: 50px !important;
+  color: white !important;
 }
 
 /* who-we-are 
@@ -797,7 +797,7 @@ section {
   color: #000;
 }
 
-/* ************************************ *Gallery ******************************** */
+/* ************************************ Gallery ******************************** */
 .gallery img {
   height: 200px;
   width: 100%;
@@ -906,7 +906,7 @@ section {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 10px;
-  border: 1px solid #ff8c00;
+  border: 1px solid #5252f2;
 }
 
 .printing-service .upload-preview-section img {
@@ -914,8 +914,22 @@ section {
 }
 
 .printing-service .file-upload-section {
+  background-color: white;
+  color: black;
   margin-top: 30px;
   padding: 50px;
+  border: 2px dashed;
+}
+
+.printing-service .file-upload-section .dropzone {
+  border: 0;
+}
+
+.printing-service .file-upload-section .dz-button {
+  background-color: #5252f2 !important;
+  color: white !important;
+  padding: 10px 15px !important;
+  border-radius: 5px !important;
 }
 
 .printing-service .privacy-alert {
@@ -942,14 +956,14 @@ section {
 }
 
 .printing-service .privacy-alert span:nth-child(3) {
-  color: #5252f2;
+  color: #ff8c00;
   font-weight: bold;
   cursor: pointer;
 }
 
 .printing-service .privacy-alert span:nth-child(3) i {
   font-size: 14px;
-  color: #5252f2;
+  color: #ff8c00;
   margin-right: 10px;
 }
 
@@ -1025,7 +1039,7 @@ section {
 }
 
 .printing-service .compare-section div:nth-child(2) span {
-  color: #5252f2;
+  color: #ff8c00;
 }
 
 .moreinfo-wrapper {
@@ -1072,7 +1086,7 @@ section {
   font-family: 'Font Awesome 5 free';
   font-weight: 900;
   content: '\f054';
-  color: #5252f2;
+  color: #ff8c00;
   margin-left: 10px;
 }
 
@@ -1080,7 +1094,7 @@ section {
   font-family: 'Font Awesome 5 free';
   font-weight: 900;
   content: '\f078';
-  color: #5252f2;
+  color: #ff8c00;
   margin-left: 10px;
 }
 
@@ -1205,359 +1219,60 @@ section {
   padding-bottom: 0.25rem;
 }
 
-.upload-info-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
 }
 
-.upload-info-section-button {
-  text-align: center;
-  width: 400px;
-  margin-top: 30px;
-  background-color: #ff8c00;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
+.form-label-group input:not(:-moz-placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
 }
 
-.printing-placeholder .upload-preview-section {
-  background-color: #ccc;
-  height: 400px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 10px;
-  border: 1px solid #ff8c00;
+.form-label-group input:not(:-ms-input-placeholder) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
 }
 
-.printing-placeholder .upload-preview-section img {
-  width: 100%;
-  height: 100;
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
 }
 
-.printing-placeholder .customize-section-info-panel div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 5px;
-  margin-bottom: 25px;
+.form-label-group input:-webkit-autofill ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #ccc;
 }
 
-.printing-placeholder .customize-section .material-card-option {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 10px;
-  border: 1px solid #ff8c00;
-  border-radius: 5px;
-}
-
-.printing-placeholder .customize-section .material-card-option h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.printing-placeholder .customize-section .material-card-option:hover, .printing-placeholder .customize-section .material-card-option-selected {
-  background-color: white;
-  color: black;
-}
-
-.printing-placeholder .customize-section .material-card-option:hover {
-  cursor: pointer;
-}
-
-.printing-placeholder .customize-section .material-img {
-  width: 200px;
-}
-
-@media (max-width: 992px) {
-  .printing-placeholder .customize-section .material-img {
-    width: 120px;
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: column-reverse;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+            flex-direction: column-reverse;
+  }
+  .form-label-group label {
+    position: static;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
   }
 }
 
-.printing-placeholder .customize-section .bottom-panel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 5px;
+.btn-loading-spinner {
+  display: none !important;
 }
-
-.printing-placeholder .customize-section .bottom-panel .pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.printing-placeholder .customize-section .bottom-panel .pagination .prev-btn,
-.printing-placeholder .customize-section .bottom-panel .pagination .next-btn {
-  padding: 2px 9px;
-  border-radius: 50%;
-  border: 1px solid white;
-  margin: 0 10px;
-  width: 30px;
-  height: 30px;
-}
-
-.printing-placeholder .customize-section .bottom-panel .pagination .prev-btn:hover,
-.printing-placeholder .customize-section .bottom-panel .pagination .next-btn:hover {
-  background-color: #ff8c00;
-  cursor: pointer;
-}
-
-.printing-placeholder .customize-section .bottom-panel .action-btn {
-  background-color: #ff8c00;
-  border-radius: 5px;
-  padding: 10px 60px;
-}
-
-.printing-placeholder .customize-section .bottom-panel .action-btn:hover {
-  cursor: pointer;
-}
-
-.printing-placeholder .customize-section .bottom-panel .action-input {
-  display: block;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 10px 0;
-}
-
-.printing-placeholder .customize-section .bottom-panel .action-input:hover::after {
-  background: #ff8c00;
-}
-
-.printing-placeholder .customize-section .bottom-panel .action-input::after {
-  -webkit-transition: 200ms all ease;
-  transition: 200ms all ease;
-  background: #ff8c00;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  content: 'Add new';
-  padding-top: 10px;
-  border-radius: 5px;
-}
-
-.printing-placeholder .form-render-button {
-  background-color: #ff8c00;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.printing-placeholder .form-render-button:hover {
-  background-color: #5252f2;
-  color: white;
-  cursor: pointer;
-}
-
-.printing-placeholder .form-render-button-selected {
-  background-color: #5252f2;
-  color: white;
-}
-
-.drag-area {
-  border: 2px dashed #ff8c00;
-  height: 500px;
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.drag-area .icon {
-  font-size: 100px;
-  color: #fff;
-}
-
-.drag-area header {
-  font-size: 30px;
-  font-weight: 500;
-  color: #fff;
-  width: 70%;
-}
-
-.drag-area span {
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  margin: 10px 0 15px 0;
-  width: 70%;
-}
-
-.drag-area button {
-  padding: 10px 25px;
-  font-size: 20px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  background: #ff8c00;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 20px 0;
-}
-
-.drag-area img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 5px;
-}
-
-.drag-area.active {
-  border: 2px solid #fff;
-}
-
-.summary-content .action-input {
-  display: block;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 10px 0;
-}
-
-.summary-content .action-input:hover::after {
-  background: #ff8c00;
-}
-
-.summary-content .action-input::after {
-  -webkit-transition: 200ms all ease;
-  transition: 200ms all ease;
-  background: #ff8c00;
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 90%;
-  height: 100%;
-  display: block;
-  content: 'Add new';
-  padding-top: 10px;
-  border-radius: 5px;
-}
-
-.summary-content .action-submit {
-  background-color: #ff8c00;
-  border-radius: 5px;
-  padding: 10px 60px;
-}
-
-.summary-content .action-submit:hover {
-  cursor: pointer;
-}
-
-.order-summary-main {
-  padding: 5px;
-}
-
-.order-details-main #deliveryDetails, .order-details-main #orderDetails, .order-details-main #orderRemarks, .order-details-main #deliveryRemarks {
-  background-color: #919191;
-  border-radius: 10px;
-  padding: 20px;
-  width: 100%;
-}
-
-.order-details-main .details-sections {
-  padding-bottom: 10px;
-}
-
-.order-details-main .bottom-panel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 20px;
-  -webkit-box-pack: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  gap: 5px;
-}
-
-.order-details-main .bottom-panel .action-btn {
-  background-color: #ff8c00;
-  border-radius: 5px;
-  padding: 10px 60px;
-}
-
-.order-details-main .bottom-panel .action-btn:hover {
-  cursor: pointer;
-}
-
-.order-details-main .bottom-panel .action-btn-other {
-  background-color: #ff8c00;
-  border-radius: 5px;
-  padding: 10px 30px;
-}
-
-.order-details-main .bottom-panel .action-btn-other:hover {
-  cursor: pointer;
-}
-
-.order-details-main .bottom-panel .btn-billing {
-  background-color: #ff8c00;
-  border-radius: 5px;
-  padding: 10px 60px;
-}
-
-.order-details-main .bottom-panel .btn-billing:hover {
-  cursor: pointer;
-}
-
-#order-summary-container .row {
-  background-color: #919191;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px 5px;
-}
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=main.css.map */
