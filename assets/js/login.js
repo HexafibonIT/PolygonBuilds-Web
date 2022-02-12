@@ -36,7 +36,6 @@
       },
       handleEvents: function () {
         const context = this;
-
         context.$emailInput.on("keyup", function () {
           if (context.validateEmail($(this).val())) {
             $(this).removeClass("is-invalid");
