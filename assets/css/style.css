@@ -1,3 +1,4 @@
+
 /* ************************************ Login ******************************** */
 .login-body {
   display: -ms-flexbox;
@@ -200,7 +201,6 @@
 .colored-toast .swal2-icon.swal2-error {
   border-color: white !important;
 }
-
 body {
   padding: 0;
 }
